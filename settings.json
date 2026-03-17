@@ -1,0 +1,70 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(echo:*)",
+      "Bash(awk:*)",
+      "Bash(open:*)",
+      "Bash(cut:*)",
+      "Bash(find:*)",
+      "Bash(xargs:*)",
+      "Bash(source:*)",
+      "Bash(terraform fmt:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(make test:*)",
+      "Bash(ls:*)",
+      "Bash(make:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(gh search:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh release list:*)",
+      "Bash(gh release view:*)",
+      "Bash(gh api:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh workflow run:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git diff-tree:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "acceptEdits"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/approve-compound-bash.sh",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "skipDangerousModePermissionPrompt": true,
+  "gitAttribution": false
+}
