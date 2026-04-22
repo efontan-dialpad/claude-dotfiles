@@ -6,13 +6,20 @@
       "Grep",
       "Bash(cat:*)",
       "Bash(grep:*)",
+      "Bash(tail:*)",
+      "Bash(du:*)",
+      "Bash(less:*)",
       "Bash(ls:*)",
+      "Bash(head:*)",
       "Bash(echo:*)",
       "Bash(awk:*)",
       "Bash(open:*)",
       "Bash(cut:*)",
       "Bash(find:*)",
       "Bash(xargs:*)",
+      "Bash(jq:*)",
+      "Bash(yq:*)",
+      "Bash(realpath:*)",
       "Bash(source:*)",
       "Bash(terraform fmt:*)",
       "Bash(python -m pytest:*)",
@@ -33,7 +40,20 @@
       "Bash(git checkout:*)",
       "Bash(git add:*)",
       "Bash(git fetch:*)",
-      "Bash(git diff-tree:*)"
+      "Bash(git diff-tree:*)",
+      "Bash(.venv/bin/pip show:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(make test:*)",
+      "mcp__plugin_atlassian_atlassian__getConfluencePage",
+      "mcp__plugin_atlassian_atlassian__searchConfluenceUsingCql",
+      "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "mcp__plugin_context-mode_context-mode__ctx_execute_file",
+      "mcp__plugin_context-mode_context-mode__ctx_search",
+      "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "mcp__plugin_context-mode_context-mode__ctx_stats",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "mcp__glean_claude-code__search"
     ],
     "deny": [],
     "ask": [],
@@ -47,8 +67,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/approve-compound-bash.sh",
+            "command": "~/.claude/hooks/compound-command-allow.sh",
             "timeout": 3
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/emmanuelfontan/.claude/hooks/rtk-rewrite.sh"
           }
         ]
       }
@@ -61,7 +90,25 @@
     "feature-dev@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true
+    "code-simplifier@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "context-mode@context-mode": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
+    }
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
